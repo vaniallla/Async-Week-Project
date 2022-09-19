@@ -38,16 +38,6 @@ async function fetchTopChamps(name) {
   );
   let championData = data.data;
   let topThree = champInfo.slice(0, 3);
-  // for (let i = 0; i < topThree.length; i++) {
-  //   for (const property in championData) {
-  //     if (championData[property].key === topThree[i].championId) {
-  //       // console.log("championData[property].key", championData[property].key);
-  //       // console.log("topThree[i].championId", topThree[i].championId);
-  //       topThree[i].championName = championData[property].id;
-  //       // console.log("topThree[i].championName", topThree[i].championName);
-  //     }
-  //   }
-  // }
 
   for (const property in championData) {
     for (let i = 0; i < topThree.length; i++) {
@@ -74,6 +64,14 @@ async function fetchChampionInfo(summonerId) {
   return championInfo;
 }
 
+async function fetchRank(name) {
+  const summonerData = await fetchBySummonerName(name);
+  const link = `https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/${summonerData.id}?${riotKey}`;
+  const { data } = await axios.get(link);
+  // console.log(data);
+  return data;
+}
+
 module.exports = {
   fetchBySummonerName,
   fetchAllMatchHistory,
@@ -81,6 +79,7 @@ module.exports = {
   fetchTopChamps,
   fetchSingleMatch,
   fetchChampionInfo,
+  fetchRank,
 };
 
 // fetchBySummonerName("vaniallla");
@@ -90,4 +89,5 @@ module.exports = {
 // fetchChampionInfo("H00xW5p4MSEiAe4uipaXQkExMRlqaSOMbDnRPJV6JgXSzmU");
 // fetchSingleMatch("NA1_4439212408");
 // fetchMatchHistoryPage("vaniallla");
-fetchTopChamps("vaniallla");
+// fetchTopChamps("vaniallla");
+// fetchRank("vaniallla");
