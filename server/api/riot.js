@@ -54,7 +54,7 @@ async function fetchTopChamps(name) {
 async function fetchSingleMatch(matchId) {
   const link = `https://americas.api.riotgames.com/lol/match/v5/matches/${matchId}?${riotKey}`;
   const { data } = await axios.get(link);
-  // console.log(data);
+  console.log(data);
   return data;
 }
 
@@ -87,7 +87,7 @@ module.exports = {
 //   "6_TIsXShg9kHjVDaaY3I3_HBZ-M4pSWCkMx-1sCgyIypi3dJVCxRCui2ut8Vec6mJSY_pIvf7skbqA"
 // );
 // fetchChampionInfo("H00xW5p4MSEiAe4uipaXQkExMRlqaSOMbDnRPJV6JgXSzmU");
-// fetchSingleMatch("NA1_4439212408");
+fetchSingleMatch("NA1_4439212408");
 // fetchMatchHistoryPage("vaniallla");
 // fetchTopChamps("vaniallla");
 // fetchRank("vaniallla");
